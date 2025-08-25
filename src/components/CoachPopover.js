@@ -56,7 +56,7 @@ export default function CoachPopover({
         aria-hidden
       />
       <div className="p-4">
-        <div className="text-[13px] font-semibold text-slate-700 mb-2">YTo round it out, you could try:</div>
+        <div className="text-[13px] font-semibold text-slate-700 mb-2">To round it out, you could try:</div>
 
         {/* Feedback bullets */}
         {bullets?.length > 0 && (
