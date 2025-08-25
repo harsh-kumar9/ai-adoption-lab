@@ -10,6 +10,7 @@ import { Button } from "@/components/Button";
 import CoachPopover from "@/components/CoachPopover";
 import Modal from "@/components/Modal";
 import { SNIPPETS } from "@/data/snippets";
+import InfoDot from "@/components/InfoDot";
 
 /* ---------- helpers ---------- */
 function prettyLevel(id){ return { ic:"IC", manager:"Manager", director:"Director/Head", vp:"VP/C-suite" }[id] || "Manager"; }
@@ -290,13 +291,25 @@ export default function ProtoChat(){
                 </div>
             </div>
 
-            <div className="flex items-center gap-2 text-xs text-slate-500" aria-label="3Cs coverage">
-                <div className={`h-2.5 w-2.5 rounded-full ${coverage.cap?'bg-green-500':'bg-slate-400/40'}`} title="Capability" />
-                <span>Capability</span>
-                <div className={`h-2.5 w-2.5 rounded-full ${coverage.collab?'bg-green-500':'bg-slate-400/40'}`} title="Collaboration" />
-                <span>Collaboration</span>
-                <div className={`h-2.5 w-2.5 rounded-full ${coverage.cond?'bg-green-500':'bg-slate-400/40'}`} title="Conditions" />
-                <span>Conditions</span>
+            <div className="flex items-center gap-4" aria-label="3Cs coverage">
+            <InfoDot
+                label="Capability"
+                active={coverage.cap}
+                definition="Individual skills, cognitive load, confidence, quality, error/rework."
+                question="What impacts is AI having on individuals (e.g., focus time, confidence, wellbeing, errors/rework)?"
+            />
+            <InfoDot
+                label="Collaboration"
+                active={coverage.collab}
+                definition="Handoffs, coordination, review latency, cycle time, documentation/knowledge."
+                question="How is AI affecting human–human collaboration and workflow (where do handoffs speed up or pile up)?"
+            />
+            <InfoDot
+                label="Conditions"
+                active={coverage.cond}
+                definition="Policy, access, training, incentives, governance, equity."
+                question="Which org rules or incentives shape AI use (who has access; what norms block or enable)?"
+            />
             </div>
           </div>
 

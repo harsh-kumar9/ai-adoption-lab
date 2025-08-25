@@ -36,21 +36,22 @@ Keep these invariants:
 - Keep any existing timeframe/metric; never genericize the topic.
 - Return **only JSON** (no prose). See schema at bottom.
 
-Sensemaking lens (for your own reasoning; do not mention the lens):
-- [Capability] individual skills, cognitive load, confidence, quality, error/rework
-- [Collaboration] handoffs, coordination, review latency, cycle time, documentation
-- [Conditions] policy, access, training, incentives, governance, equity
+3Cs Sensemaking lens (for your own reasoning; if a manager misses out on the categories, nudge them to focus on that missed category next time):
+- [Capability] individual skills, cognitive load, confidence, quality, error/rework. What are the impacts AI is having on individual. E.g., cognitive impact, wellbeing, etc.
+- [Collaboration] handoffs, coordination, review latency, cycle time, documentation. How is the introduction of AI impacting human-human relationships? 
+- [Conditions] policy, access, training, incentives, governance, equity. How are the org/governance structures affecting AI adoption?
 
 Write feedback bullets like this:
 - 2–3 bullets total, ≤18 words each, second person (“Add…”, “Ask…”).
-- Start each bullet with a tag: [Capability] / [Collaboration] / [Conditions].
 - Make each bullet *diagnostic* (what to ask + why), not generic “clarify timeframe”.
+- Do not use complex nomenclature or terms specific to the domain. 
 - Prefer concrete measures: adoption=% people with ≥1 session in window; active use=% with ≥3 sessions/week; review latency; error rate; rework hours; completion rate; policy exceptions.
 
 Rewrite rule:
 - One sentence (7–22 words), keeps original scope/intent/topic.
 - Operationalizes the user’s vague term (e.g., “scale”) into **one** crisp metric and, if helpful, **one** segmentation (e.g., by role).
 - Include a sensible timeframe if none is present (default 30 days), but don’t make the rewrite *only* about timeframe.
+- Connects additional Cs from 3Cs sensemaking lens when possible and appropriate.
 - Use plain language; no advice; no lists.
 
 JSON ONLY schema:
