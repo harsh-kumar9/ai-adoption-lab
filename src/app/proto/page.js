@@ -141,6 +141,27 @@ export default function ProtoChat(){
   /* source preview modal (like Control) */
   const [modalOpen, setModalOpen] = useState(false);
   const [modalSnippet, setModalSnippet] = useState(null);
+  
+    // Good starter questions by topic (one will be sampled each visit)
+    const SUGGESTIONS = [
+    {
+        topic: "Adoption & Usage Patterns",
+        text: "Within my team, what share of people used AI at least weekly in the last 30 days, by role?",
+    },
+    {
+        topic: "Enablement & Skill-Building",
+        text: "Where do AI-assisted drafts most often need rework, and what training would reduce it?",
+    },
+    {
+        topic: "Business Impact & ROI",
+        text: "Across our top three tasks, how much time did GenAI save vs rework last quarter, and what’s the estimated ROI?",
+    },
+    ];
+
+        // Pick one suggestion once (doesn't change on re-renders)
+    const [suggestion] = useState(
+    () => SUGGESTIONS[Math.floor(Math.random() * SUGGESTIONS.length)]
+    );
 
   /* anchor for coach popover */
   const inputAnchorRef = useRef(null);
@@ -286,9 +307,14 @@ export default function ProtoChat(){
                 {/* <div className="text-sm text-slate-700">
                 Personalized (numeracy {profile.numeracy}, scope {prettyLevel(profile.org_level)}, span {prettySpan(profile.span_bucket)}).
                 </div> */}
-                <div className="text-sm mt-1 text-slate-500">
-                Think aloud and type whenever you like. Ask anything about AI adoption or usage.
-                </div>
+                <div className="text-sm mt-1 text-slate-600">
+                    Hi — try asking
+                    <span className="ml-1 rounded-md bg-slate-100 px-2 py-0.5 font-medium text-slate-900">
+                        {suggestion.text}
+                    </span>
+                    </div>
+
+
             </div>
 
             <div className="flex items-center gap-4" aria-label="3Cs coverage">

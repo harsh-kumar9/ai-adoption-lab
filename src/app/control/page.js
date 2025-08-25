@@ -171,13 +171,38 @@ export default function ControlChat() {
     setMessages([...next, { role: "assistant", content: text }]);
   }
 
+  // Good starter questions by topic (one will be sampled each visit)
+    const SUGGESTIONS = [
+    {
+        topic: "Adoption & Usage Patterns",
+        text: "Within my team, what share of people used AI at least weekly in the last 30 days, by role?",
+    },
+    {
+        topic: "Enablement & Skill-Building",
+        text: "Where do AI-assisted drafts most often need rework, and what training would reduce it?",
+    },
+    {
+        topic: "Business Impact & ROI",
+        text: "Across our top three tasks, how much time did GenAI save vs rework last quarter, and what’s the estimated ROI?",
+    },
+    ];
+
+        // Pick one suggestion once (doesn't change on re-renders)
+    const [suggestion] = useState(
+    () => SUGGESTIONS[Math.floor(Math.random() * SUGGESTIONS.length)]
+    );
+
+
   return (
     <div className="grid grid-cols-12 gap-6">
       <div className="col-span-8 space-y-3">
         <Card>
-          <div className="text-sm" style={{ color: "var(--muted)" }}>
-            Generic analyst agent. Ask about AI adoption/usage; if you want recommendations, say so.
-          </div>
+          <div className="text-sm mt-1 text-slate-600">
+                    Hi — try asking
+                    <span className="ml-1 rounded-md bg-slate-100 px-2 py-0.5 font-medium text-slate-900">
+                        {suggestion.text}
+                    </span>
+                    </div>
           <ChatPanel messages={messages} />
           <div className="mt-3 flex gap-2">
             <input
