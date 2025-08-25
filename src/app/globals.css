@@ -1,26 +1,87 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ----- Fixed light theme (no dark mode) ----- */
+:root{
+  --bg:#f7f8fb;
+  --bg-grad-a:#f8fafc;      /* subtle gradient */
+  --bg-grad-b:#eef2ff;
+
+  --surface:#ffffff;
+  --ink:#0f172a;            /* text */
+  --muted:#475569;          /* helper text */
+  --border:#e5e7eb;
+
+  --primary:#4f46e5;        /* indigo-600 */
+  --primary-ink:#ffffff;
+
+  /* Chat bubbles */
+  --bubble-user-bg:#eef2ff;
+  --bubble-user-border:#c7d2fe;
+  --bubble-assistant-bg:#ffffff;
+  --bubble-assistant-border:#e5e7eb;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+body{
+  color:var(--ink);
+  background:
+    radial-gradient(1200px 600px at 10% 0%, var(--bg-grad-a), var(--bg-grad-b)),
+    linear-gradient(var(--bg), var(--bg));
+  background-attachment: fixed;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* nice focus ring */
+.focus-ring{
+  outline: none;
+  --tw-ring-offset-color: var(--surface);
+  box-shadow:
+    0 0 0 2px rgb(99 102 241 / 0.6), /* ring */
+    0 0 0 4px var(--surface);        /* offset (inner) */
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* card */
+.card{
+  border-radius: 1rem; /* 2xl */
+  border: 1px solid var(--border);
+  background: var(--surface);
+  box-shadow:
+    0 1px 0 rgba(15,23,42,.03),
+    0 12px 34px rgba(2,6,23,.06);
+}
+
+/* chat bubbles */
+.bubble{
+  border-radius: 1rem;
+  border: 1px solid var(--border);
+  padding: .5rem .75rem;
+  line-height: 1.6;
+  font-size: 15px;
+  white-space: pre-wrap;
+  color: var(--ink);
+}
+.bubble-user{
+  background: var(--bubble-user-bg);
+  border-color: var(--bubble-user-border);
+}
+.bubble-assistant{
+  background: var(--bubble-assistant-bg);
+  border-color: var(--bubble-assistant-border);
+}
+
+.kicker{
+  font-size: 10px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* inputs */
+input, textarea, select{
+  color: var(--ink);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: .5rem;
+  padding: .5rem .75rem;
+}
+input::placeholder, textarea::placeholder{
+  color: color-mix(in srgb, var(--ink) 45%, transparent);
 }
